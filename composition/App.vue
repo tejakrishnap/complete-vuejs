@@ -1,5 +1,4 @@
 <template>
-  <button @click="increment">{{ count }}</button>
   <button @click="a++">{{ a }}</button>
   <button @click="b++">{{ b }}</button>
   <p>{{ total }}</p>
@@ -7,39 +6,11 @@
 </template>
 
 <script>
-import { computed, ref, watch } from "vue";
+import { useNumbers } from "./useNumbers";
 
 export default {
   setup() {
-    const count = ref(0);
-    const a = ref(0);
-    const b = ref(0);
-    const history = ref([]);
-
-    const increment = () => {
-      count.value++;
-    };
-
-    const total = computed(() => count.value + a.value + b.value);
-
-    watch([a, b], ([newA, newB], [oldA, oldB]) => {
-      if (newA !== oldA) {
-        history.value.push(`A: ${oldA} -> ${newA}`);
-      }
-
-      if (newB !== oldB) {
-        history.value.push(`B: ${oldB} -> ${newB}`);
-      }
-    });
-
-    return {
-      count,
-      a,
-      b,
-      increment,
-      total,
-      history,
-    };
+    return useNumbers();
   },
 };
 </script>
