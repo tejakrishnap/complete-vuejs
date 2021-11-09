@@ -6,6 +6,7 @@
     <h2>{{ currentPost.title }}</h2>
     <h4>{{ currentPost.content }}</h4>
   </div>
+  {{ postId }}
 </template>
 
 <script>
@@ -17,11 +18,11 @@ export default {
     const store = useStore();
 
     const click = (post) => {
-      store.commit("setPostId", post.id);
+      store.commit("posts/setPostId", post.id);
     };
 
     const fetchData = () => {
-      store.dispatch("fetchPosts");
+      store.dispatch("posts/fetch");
     };
 
     onMounted(() => {
@@ -30,9 +31,9 @@ export default {
 
     return {
       click,
-      posts: computed(() => store.state.posts),
-      postId: computed(() => store.state.postId),
-      currentPost: computed(() => store.getters.currentPost),
+      posts: computed(() => store.state.posts.posts),
+      postId: computed(() => store.state.posts.postId),
+      currentPost: computed(() => store.getters["posts/currentPost"]),
     };
   },
 };

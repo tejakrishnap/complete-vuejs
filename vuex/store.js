@@ -3,7 +3,8 @@ import { testPosts } from "./testPosts";
 
 const delay = () => new Promise((res) => setTimeout(res, 1000)); // simulating a server delay
 
-export const store = createStore({
+const posts = {
+  namespaced: true,
   state() {
     return {
       postId: null,
@@ -19,7 +20,7 @@ export const store = createStore({
     },
   },
   actions: {
-    async fetchPosts(ctx) {
+    async fetch(ctx) {
       await delay();
       ctx.commit("setPosts", testPosts); // commiting a mutation from an action
     },
@@ -30,5 +31,11 @@ export const store = createStore({
         return x.id === state.postId;
       });
     },
+  },
+};
+
+export const store = createStore({
+  modules: {
+    posts,
   },
 });
