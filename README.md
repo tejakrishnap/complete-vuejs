@@ -1,10 +1,8 @@
-# Complete Vue.js 3 (Inc Options + Composition API, Vue Router and Vuex)
-
-Hi! Welcome to my course on Vue.js 3. Let's have a great time learning Vue.js 3 🎉.
+Hi there! 🎉.
 
 ## Installation
 
-I am using:
+Use versions:
 
 - node.js v12.18.3
 - yarn 1.22.10
@@ -19,7 +17,7 @@ yarn vite --config vite.config.js <project>
 
 ## Getting Started
 
-Either clone master and `yarn install`, or start with `getting-started` and:
+start with `getting-started` and:
 
 ```sh
 yarn add vue@3.0.7
